@@ -1,0 +1,11 @@
+﻿use [your-db]
+create table dbo.Cache
+(
+	Id nvarchar(449) collate SQL_Latin1_General_CP1_CS_AS not null,
+	Value varbinary(MAX) not null,
+    ExpiresAtTime datetimeoffset not null,
+    SlidingExpirationInSeconds bigint null,
+    AbsoluteExpiration datetimeoffset null,
+    constraint pk_Id primary key (Id)
+)
+create nonclustered index Index_ExpiresAtTime on dbo.Cache(ExpiresAtTime)
